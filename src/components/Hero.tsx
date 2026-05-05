@@ -4,7 +4,7 @@ import SkillTag from './SkillTag'
 
 export default function Hero() {
   const t = useTranslations('hero')
-  const skills: string[] = t.raw('skills')
+  const skills = t.raw('skills') as string[]
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
@@ -25,12 +25,12 @@ export default function Hero() {
         >
           {t('cta.contact')}
         </Link>
-        <a
-          href="#cv"
+        <Link
+          href="/about"
           className="border border-border text-text-secondary text-xs px-5 py-2.5 rounded-sm hover:border-accent hover:text-accent transition-colors"
         >
           {t('cta.cv')}
-        </a>
+        </Link>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 max-w-lg">
