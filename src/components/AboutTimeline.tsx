@@ -3,26 +3,45 @@ import SkillTag from './SkillTag'
 
 const experience = [
   {
-    period: '2019 → present',
+    period: 'Nov 2022 → Apr 2025',
     company: 'Globant',
-    role: 'AI Engineer',
-    current: true,
-    tech: ['Python', 'LangChain', 'AWS', 'LLMs']
+    role: 'Python Developer',
+    current: false,
+    tech: ['Python', 'LangChain', 'OpenAI', 'Dagster', 'FastAPI', 'Golang']
   },
   {
-    period: '2016 → 2019',
+    period: 'Jun 2021 → May 2022',
     company: 'Human Living Data',
-    role: 'Data Engineer',
+    role: 'Co-founder & IT Lead',
     current: false,
-    tech: ['Python', 'Dagster', 'ETL', 'GCP']
+    tech: ['Python', 'Scikit-learn', 'Dash Plotly', 'RPA', 'AWS']
+  },
+  {
+    period: 'Mar 2020 → Jun 2021',
+    company: 'Inmotion Group',
+    role: 'IT Lead',
+    current: false,
+    tech: ['Python', 'Pandas', 'Scikit-learn', 'AWS', 'GIS']
+  },
+  {
+    period: 'Nov 2018 → Mar 2020',
+    company: 'Leonisa',
+    role: 'Data Analyst',
+    current: false,
+    tech: ['Python', 'Tableau', 'PowerBI', 'ETL']
   }
 ]
 
 const education = [
   {
-    period: '2008 → 2013',
-    institution: 'Universidad de Antioquia',
-    degree: 'Ingeniería de Sistemas'
+    period: '2024 → 2026',
+    institution: 'Universidad EAFIT',
+    degree: 'MSc Engineering (Candidate)'
+  },
+  {
+    period: '→ 2013',
+    institution: 'Universidad EAFIT',
+    degree: 'BS Systems Engineering'
   }
 ]
 
