@@ -16,6 +16,7 @@ export default function LocaleSwitcher() {
   return (
     <button
       onClick={handleSwitch}
+      aria-label={`Switch language to ${otherLocale === 'en' ? 'English' : 'Español'}`}
       className="font-mono text-xs text-text-muted hover:text-accent transition-colors"
     >
       {otherLocale.toUpperCase()}

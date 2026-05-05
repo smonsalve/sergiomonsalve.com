@@ -31,7 +31,7 @@ export default function Footer() {
             WhatsApp
           </a>
           <a
-            href="http://songosorhongo.com"
+            href="https://songosorhongo.com"
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-xs text-text-muted hover:text-accent transition-colors"

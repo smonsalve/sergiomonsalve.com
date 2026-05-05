@@ -25,4 +25,9 @@ describe('Nav', () => {
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument()
   })
+
+  it('renders locale switcher button for the other locale', () => {
+    render(<Nav />)
+    expect(screen.getByRole('button', { name: /switch language to english/i })).toBeInTheDocument()
+  })
 })
