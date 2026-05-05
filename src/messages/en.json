@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "comment": "// AI Software Engineer",
+    "tagline": "Systems engineer with 13+ years building software solutions powered by Python, AI, and data science. I turn data into decisions and complex problems into clean code.",
+    "cta": {
+      "contact": "Get in touch",
+      "cv": "View CV"
+    },
+    "skills": ["Python", "AI / LLMs", "AWS", "FastAPI", "Django", "LangChain", "Dagster", "ETL"]
+  },
+  "about": {
+    "bio": "Systems engineer with 13+ years building software solutions powered by Python, AI, and data science. I turn data into decisions and complex problems into clean code. Entrepreneur, curious cook, and mushroom explorer.",
+    "skillsTitle": "// core stack",
+    "skillGroups": [
+      "Python · FastAPI · Django",
+      "AI / LLMs · LangChain",
+      "AWS · GCP · Dagster",
+      "Data Science · ETL"
+    ],
+    "personalLabel": "// beyond the code",
+    "songosorhongoLabel": "Songosorhongo — mushroom-based cuisine",
+    "location": "📍 Santa Elena, Antioquia",
+    "downloadCv": "⬇ Download CV",
+    "experienceTitle": "// experience",
+    "educationTitle": "// education"
+  },
+  "contact": {
+    "comment": "// new message",
+    "title": "Let's talk",
+    "projectTypeLabel": "// project type",
+    "projectTypes": {
+      "freelance": "Freelance",
+      "fulltime": "Full-time",
+      "collaboration": "Collaboration"
+    },
+    "nameLabel": "name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "email",
+    "emailPlaceholder": "your@email.com",
+    "messageLabel": "message",
+    "messagePlaceholder": "Tell me about your project...",
+    "submit": "Send →",
+    "whatsapp": "💬 WhatsApp direct",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Something went wrong. Please try again."
+  }
+}
