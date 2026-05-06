@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 import { routing } from '@/i18n/routing'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
           <Footer />
         </NextIntlClientProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
