@@ -1,14 +1,23 @@
 {
+  "blog": {
+    "comment": "// posts",
+    "title": "Blog",
+    "allTags": "todos",
+    "empty": "no hay posts aún"
+  },
   "meta": {
     "heroTitle": "Sergio Monsalve — AI Software Engineer",
     "heroDescription": "Ingeniero de sistemas con más de 13 años de experiencia construyendo soluciones con Python, IA y ciencias de datos. Disponible para freelance y posiciones full-time.",
     "aboutTitle": "Sobre mí",
     "aboutDescription": "Experiencia, stack técnico y CV de Sergio Monsalve, AI Software Engineer especializado en Python, LLMs y arquitecturas de datos.",
     "contactTitle": "Contacto",
-    "contactDescription": "Hablemos de tu proyecto. Disponible para freelance, full-time y colaboraciones en Python, IA y desarrollo de software."
+    "contactDescription": "Hablemos de tu proyecto. Disponible para freelance, full-time y colaboraciones en Python, IA y desarrollo de software.",
+    "blogTitle": "Blog",
+    "blogDescription": "Artículos sobre Python, LLMs, pipelines de datos y desarrollo de software en el mundo real."
   },
   "nav": {
     "about": "Sobre mí",
+    "blog": "Blog",
     "contact": "Contacto"
   },
   "hero": {

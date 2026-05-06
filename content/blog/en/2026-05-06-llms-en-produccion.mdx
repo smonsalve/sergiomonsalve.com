@@ -1,0 +1,66 @@
+---
+title: "LLMs in production: real-world lessons"
+date: "2026-05-06"
+description: "Three years integrating language models into real data pipelines. What works, what doesn't, and what nobody tells you."
+tags: ["python", "llms", "production"]
+---
+
+When I started integrating LLMs into data pipelines in 2022, almost all documentation assumed you were building a demo chatbot. Real use cases — document processing at scale, structured extraction, pipelines with retries and validation — had very little material.
+
+These are the three lessons that cost me the most to learn.
+
+## 1. The prompt is code
+
+Treat your prompts the way you treat code: versioned, tested, reviewed. A prompt that "worked in dev" can behave differently in production from minimal changes in input data.
+
+What works:
+
+```python
+# Store prompts as templates with explicit variables
+EXTRACTION_PROMPT = """
+Extract the following fields from the text as valid JSON:
+- date (format YYYY-MM-DD)
+- amount (number, no currency symbol)
+- concept (string)
+
+Text:
+{text}
+
+Respond only with the JSON, no explanations.
+"""
+```
+
+What doesn't work: inline hardcoded prompts buried in business logic.
+
+## 2. Always validate output
+
+LLMs don't guarantee format. Even if the model "almost always" returns valid JSON, that 2% error rate will break your production pipeline.
+
+```python
+from pydantic import BaseModel
+import json
+
+class ExtractionResult(BaseModel):
+    date: str
+    amount: float
+    concept: str
+
+def parse_llm_output(raw: str) -> ExtractionResult:
+    try:
+        data = json.loads(raw.strip())
+        return ExtractionResult(**data)
+    except Exception as e:
+        raise ValueError(f"Invalid LLM output: {raw!r}") from e
+```
+
+Pydantic + explicit error handling is the minimum. For critical cases, add retries with a corrected prompt.
+
+## 3. Measure everything
+
+Latency, cost per call, validation error rate, token usage. Without metrics you can't optimize.
+
+With Dagster, this is natural: each asset has its own logging scope and you can add custom metrics per run. In other contexts, a simple wrapper with structured logging is enough to start.
+
+---
+
+There's a lot more to say about semantic caching, model selection by task, and rate limit handling. Saving that for the next post.

@@ -1,0 +1,66 @@
+---
+title: "LLMs en producción: lecciones del mundo real"
+date: "2026-05-06"
+description: "Tres años integrando modelos de lenguaje en pipelines de datos reales. Lo que funciona, lo que no, y lo que nadie te dice."
+tags: ["python", "llms", "producción"]
+---
+
+Cuando empecé a integrar LLMs en pipelines de datos en 2022, casi toda la documentación asumía que ibas a hacer un chatbot demo. Los casos de uso reales —procesamiento de documentos a escala, extracción estructurada, pipelines con reintentos y validación— tenían muy poco material.
+
+Estas son las tres lecciones que más me costaron aprender.
+
+## 1. El prompt es código
+
+Trata tus prompts como tratas tu código: versionados, testeados, revisados. Un prompt que "funcionó en dev" puede comportarse diferente en producción por cambios mínimos en los datos de entrada.
+
+Lo que funciona:
+
+```python
+# Guarda prompts como templates con variables explícitas
+EXTRACTION_PROMPT = """
+Extrae los siguientes campos del texto en JSON válido:
+- fecha (formato YYYY-MM-DD)
+- monto (número, sin símbolo de moneda)
+- concepto (string)
+
+Texto:
+{text}
+
+Responde únicamente con el JSON, sin explicaciones.
+"""
+```
+
+Lo que no funciona: prompts inline hardcodeados en medio de la lógica de negocio.
+
+## 2. Valida la salida siempre
+
+Los LLMs no garantizan formato. Aunque el modelo "casi siempre" devuelve JSON válido, ese 2% de errores va a dañar tu pipeline en producción.
+
+```python
+from pydantic import BaseModel
+import json
+
+class ExtractionResult(BaseModel):
+    fecha: str
+    monto: float
+    concepto: str
+
+def parse_llm_output(raw: str) -> ExtractionResult:
+    try:
+        data = json.loads(raw.strip())
+        return ExtractionResult(**data)
+    except Exception as e:
+        raise ValueError(f"LLM output inválido: {raw!r}") from e
+```
+
+Pydantic + manejo explícito de errores es lo mínimo. Para casos críticos, agrega reintentos con prompt corregido.
+
+## 3. Mide todo
+
+Latencia, costo por llamada, tasa de errores de validación, uso de tokens. Sin métricas no puedes optimizar.
+
+Con Dagster, esto es natural: cada asset tiene su propio scope de logging y puedes agregar métricas custom por run. En otros contextos, un simple wrapper con logging estructurado es suficiente para empezar.
+
+---
+
+Hay mucho más que decir sobre caching semántico, selección de modelos por tarea, y manejo de rate limits. Lo dejo para el siguiente post.

@@ -18,6 +18,12 @@ export default function Nav() {
           {t('about')}
         </Link>
         <Link
+          href="/blog"
+          className="text-xs text-text-secondary hover:text-text transition-colors"
+        >
+          {t('blog')}
+        </Link>
+        <Link
           href="/contact"
           className="text-xs text-text-secondary hover:text-text transition-colors"
         >
