@@ -15,15 +15,14 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Sergio Monsalve — AI Software Engineer',
-  description:
-    'Systems engineer with 13+ years building software solutions powered by Python, AI, and data science.',
+  metadataBase: new URL('https://sergiomonsalve.com'),
+  title: {
+    default: 'Sergio Monsalve — AI Software Engineer',
+    template: '%s — Sergio Monsalve'
+  },
   openGraph: {
-    title: 'Sergio Monsalve — AI Software Engineer',
-    description:
-      'Systems engineer with 13+ years building software solutions powered by Python, AI, and data science.',
-    url: 'https://sergiomonsalve.com',
-    siteName: 'Sergio Monsalve'
+    siteName: 'Sergio Monsalve',
+    type: 'website'
   }
 }
 

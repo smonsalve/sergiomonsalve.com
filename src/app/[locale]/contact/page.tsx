@@ -1,8 +1,36 @@
-import { useTranslations } from 'next-intl'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import ContactForm from '@/components/ContactForm'
 
-export default function ContactPage() {
-  const t = useTranslations('contact')
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'meta' })
+  return {
+    title: t('contactTitle'),
+    description: t('contactDescription'),
+    alternates: {
+      canonical: `/${locale}/contact`,
+      languages: { es: '/es/contact', en: '/en/contact' }
+    },
+    openGraph: {
+      title: `${t('contactTitle')} — Sergio Monsalve`,
+      description: t('contactDescription'),
+      url: `/${locale}/contact`
+    }
+  }
+}
+
+export default async function ContactPage({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'contact' })
   return (
     <div className="max-w-lg mx-auto px-6 py-16">
       <p className="font-mono text-xs text-text-muted mb-3">{t('comment')}</p>

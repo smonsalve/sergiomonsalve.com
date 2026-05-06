@@ -1,4 +1,12 @@
 {
+  "meta": {
+    "heroTitle": "Sergio Monsalve — AI Software Engineer",
+    "heroDescription": "Systems engineer with 13+ years building solutions with Python, AI, and data science. Available for freelance and full-time positions.",
+    "aboutTitle": "About",
+    "aboutDescription": "Experience, tech stack, and CV of Sergio Monsalve, AI Software Engineer specializing in Python, LLMs, and data architectures.",
+    "contactTitle": "Contact",
+    "contactDescription": "Let's talk about your project. Available for freelance, full-time, and collaborations in Python, AI, and software development."
+  },
   "nav": {
     "about": "About",
     "contact": "Contact"
