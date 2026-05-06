@@ -24,6 +24,12 @@ export default function Nav() {
           {t('blog')}
         </Link>
         <Link
+          href="/recipes"
+          className="text-xs text-text-secondary hover:text-text transition-colors"
+        >
+          {t('recipes')}
+        </Link>
+        <Link
           href="/contact"
           className="text-xs text-text-secondary hover:text-text transition-colors"
         >

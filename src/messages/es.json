@@ -5,6 +5,14 @@
     "allTags": "todos",
     "empty": "no hay posts aún"
   },
+  "recipes": {
+    "comment": "// recetas",
+    "title": "Recetas",
+    "allTags": "todas",
+    "empty": "no hay recetas aún",
+    "servings": "porciones",
+    "ingredients": "ingredientes"
+  },
   "meta": {
     "heroTitle": "Sergio Monsalve — AI Software Engineer",
     "heroDescription": "Ingeniero de sistemas con más de 13 años de experiencia construyendo soluciones con Python, IA y ciencias de datos. Disponible para freelance y posiciones full-time.",
@@ -13,11 +21,14 @@
     "contactTitle": "Contacto",
     "contactDescription": "Hablemos de tu proyecto. Disponible para freelance, full-time y colaboraciones en Python, IA y desarrollo de software.",
     "blogTitle": "Blog",
-    "blogDescription": "Artículos sobre Python, LLMs, pipelines de datos y desarrollo de software en el mundo real."
+    "blogDescription": "Artículos sobre Python, LLMs, pipelines de datos y desarrollo de software en el mundo real.",
+    "recipesTitle": "Recetas",
+    "recipesDescription": "Recetas de cocina de Sergio Monsalve — vegetarianas, con hongos y de temporada."
   },
   "nav": {
     "about": "Sobre mí",
     "blog": "Blog",
+    "recipes": "Recetas",
     "contact": "Contacto"
   },
   "hero": {

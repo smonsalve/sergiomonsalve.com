@@ -5,6 +5,14 @@
     "allTags": "all",
     "empty": "no posts yet"
   },
+  "recipes": {
+    "comment": "// recipes",
+    "title": "Recipes",
+    "allTags": "all",
+    "empty": "no recipes yet",
+    "servings": "servings",
+    "ingredients": "ingredients"
+  },
   "meta": {
     "heroTitle": "Sergio Monsalve — AI Software Engineer",
     "heroDescription": "Systems engineer with 13+ years building solutions with Python, AI, and data science. Available for freelance and full-time positions.",
@@ -13,11 +21,14 @@
     "contactTitle": "Contact",
     "contactDescription": "Let's talk about your project. Available for freelance, full-time, and collaborations in Python, AI, and software development.",
     "blogTitle": "Blog",
-    "blogDescription": "Articles on Python, LLMs, data pipelines, and real-world software development."
+    "blogDescription": "Articles on Python, LLMs, data pipelines, and real-world software development.",
+    "recipesTitle": "Recipes",
+    "recipesDescription": "Recipes by Sergio Monsalve — vegetarian, mushroom-forward, and seasonal."
   },
   "nav": {
     "about": "About",
     "blog": "Blog",
+    "recipes": "Recipes",
     "contact": "Contact"
   },
   "hero": {

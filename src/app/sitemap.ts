@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next'
 import { getPostSlugs } from '@/lib/posts'
+import { getRecipeSlugs } from '@/lib/recipes'
 
 const base = 'https://sergiomonsalve.com'
 const locales = ['es', 'en']
-const staticRoutes = ['', '/about', '/contact', '/blog']
+const staticRoutes = ['', '/about', '/contact', '/blog', '/recipes']
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = locales.flatMap(locale =>
@@ -24,5 +25,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   )
 
-  return [...staticEntries, ...postEntries]
+  const recipeEntries = locales.flatMap(locale =>
+    getRecipeSlugs(locale).map(slug => ({
+      url: `${base}/${locale}/recipes/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.6
+    }))
+  )
+
+  return [...staticEntries, ...postEntries, ...recipeEntries]
 }
