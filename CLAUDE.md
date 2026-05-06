@@ -14,11 +14,7 @@ npm run test:run     # run tests once (CI mode)
 
 ## Deployment
 
-GitHub → Vercel auto-deploy is not triggering. Always deploy manually:
-
-```bash
-npx vercel --prod --yes
-```
+Pushes to `main` on GitHub (`serandmoncas/sergiomonsalve.com`) trigger Vercel production deploys automatically.
 
 ## Architecture
 
@@ -40,6 +36,4 @@ Next.js 16.2.4 App Router with `src/` directory layout. All routes are nested un
 
 ## Known issues
 
-- `/favicon.ico` returns 404 — favicon not yet added to `public/`
-- GitHub → Vercel auto-deploy not working — use `npx vercel --prod --yes`
 - Resend emails land in spam until domain is fully verified (see Email section above)
