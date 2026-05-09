@@ -35,12 +35,15 @@
     "contactDescription": "Hablemos de tu proyecto. Disponible para freelance, full-time y colaboraciones en Python, IA y desarrollo de software.",
     "blogTitle": "Blog",
     "blogDescription": "Artículos sobre Python, LLMs, pipelines de datos y desarrollo de software en el mundo real.",
+    "portfolioTitle": "Portfolio",
+    "portfolioDescription": "Proyectos y casos de estudio de Sergio Monsalve — desarrollo full stack, Python, IA y datos.",
     "recipesTitle": "Recetas",
     "recipesDescription": "Recetas de cocina de Sergio Monsalve — vegetarianas, con hongos y de temporada."
   },
   "nav": {
     "about": "Sobre mí",
     "blog": "Blog",
+    "portfolio": "Portfolio",
     "recipes": "Recetas",
     "contact": "Contacto"
   },
@@ -88,5 +91,20 @@
     "whatsapp": "💬 WhatsApp directo",
     "success": "¡Mensaje enviado! Te respondo pronto.",
     "error": "Algo salió mal. Intenta de nuevo."
+  },
+  "portfolio": {
+    "comment": "// proyectos",
+    "pageTitle": "Proyectos",
+    "stack": "// stack",
+    "links": "// links",
+    "github": "GitHub",
+    "demo": "Demo en vivo",
+    "viewCase": "Ver caso →",
+    "backToPortfolio": "← Portfolio",
+    "empty": "próximamente",
+    "status": {
+      "active": "activo",
+      "archived": "archivado"
+    }
   }
 }
