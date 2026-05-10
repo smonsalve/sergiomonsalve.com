@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 export default function AboutBio() {
@@ -6,9 +7,19 @@ export default function AboutBio() {
 
   return (
     <div className="mb-16">
-      <p className="text-sm text-text-secondary leading-relaxed mb-8 max-w-2xl">
-        {t('bio')}
-      </p>
+      <div className="flex items-start gap-6 mb-8">
+        <div className="relative w-24 h-24 flex-shrink-0 rounded-sm overflow-hidden border border-border">
+          <Image
+            src="/about/sergio-profile.jpg"
+            alt="Sergio Monsalve"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <p className="text-sm text-text-secondary leading-relaxed">
+          {t('bio')}
+        </p>
+      </div>
 
       <p className="font-mono text-xs text-text-muted mb-4">{t('skillsTitle')}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8 max-w-lg">
@@ -21,7 +32,7 @@ export default function AboutBio() {
       </div>
 
       <p className="font-mono text-xs text-text-muted mb-3">{t('personalLabel')}</p>
-      <div className="text-sm text-text-secondary space-y-1 mb-8">
+      <div className="text-sm text-text-secondary space-y-1 mb-4">
         <p>
           <span aria-hidden="true">🍄</span>{' '}
           <a
@@ -34,6 +45,14 @@ export default function AboutBio() {
           </a>
         </p>
         <p>{t('location')}</p>
+      </div>
+      <div className="relative aspect-video rounded-sm overflow-hidden border border-border mb-8">
+        <Image
+          src="/about/sergio-parapente.jpg"
+          alt="Parapente en las montañas de Antioquia"
+          fill
+          className="object-cover object-top"
+        />
       </div>
 
       <a
