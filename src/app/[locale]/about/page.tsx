@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import AboutBio from '@/components/AboutBio'
-import AboutTimeline from '@/components/AboutTimeline'
+import AboutPageContent from '@/components/about/AboutPageContent'
 
 export async function generateMetadata({
   params
@@ -25,11 +24,20 @@ export async function generateMetadata({
   }
 }
 
-export default function AboutPage() {
+export default async function AboutPage({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'about' })
+
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16">
-      <AboutBio />
-      <AboutTimeline />
-    </div>
+    <AboutPageContent
+      locale={locale}
+      downloadCvLabel={t('downloadCv')}
+      portfolioLabel={locale === 'es' ? 'Ver portfolio →' : 'View portfolio →'}
+      eduTitle={t('educationTitle')}
+    />
   )
 }
