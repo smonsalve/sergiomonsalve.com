@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import SkillTag from './SkillTag'
 
 const experience = [
@@ -83,7 +85,7 @@ export default function AboutTimeline() {
       </div>
 
       <p className="font-mono text-xs text-text-muted mb-6">{t('educationTitle')}</p>
-      <div className="space-y-4">
+      <div className="space-y-4 mb-16">
         {education.map(edu => (
           <div key={edu.institution} className="border-l-2 border-border pl-4">
             <p className="font-mono text-xs text-text-muted mb-1">{edu.period}</p>
@@ -92,6 +94,36 @@ export default function AboutTimeline() {
           </div>
         ))}
       </div>
+
+      <p className="font-mono text-xs text-text-muted mb-3">{t('personalLabel')}</p>
+      <div className="text-sm text-text-secondary space-y-1 mb-4">
+        <p>
+          <span aria-hidden="true">🍄</span>{' '}
+          <a
+            href="https://songosorhongo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            {t('songosorhongoLabel')}
+          </a>
+        </p>
+        <p>{t('location')}</p>
+      </div>
+      <div className="relative aspect-video rounded-sm overflow-hidden border border-border mb-6">
+        <Image
+          src="/about/sergio-parapente.jpg"
+          alt="Parapente en las montañas de Antioquia"
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+      <Link
+        href="/blog/2026-05-09-mas-alla-del-codigo"
+        className="font-mono text-xs text-accent hover:underline"
+      >
+        {t('beyondTheCodeLink')} →
+      </Link>
     </div>
   )
 }

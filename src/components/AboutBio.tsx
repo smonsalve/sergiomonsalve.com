@@ -31,30 +31,6 @@ export default function AboutBio() {
         ))}
       </div>
 
-      <p className="font-mono text-xs text-text-muted mb-3">{t('personalLabel')}</p>
-      <div className="text-sm text-text-secondary space-y-1 mb-4">
-        <p>
-          <span aria-hidden="true">🍄</span>{' '}
-          <a
-            href="https://songosorhongo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            {t('songosorhongoLabel')}
-          </a>
-        </p>
-        <p>{t('location')}</p>
-      </div>
-      <div className="relative aspect-video rounded-sm overflow-hidden border border-border mb-8">
-        <Image
-          src="/about/sergio-parapente.jpg"
-          alt="Parapente en las montañas de Antioquia"
-          fill
-          className="object-cover object-center"
-        />
-      </div>
-
       <a
         href="https://orlniujfwolyinsuezcu.supabase.co/storage/v1/object/public/assets/cv-sergio-monsalve.pdf"
         target="_blank"
