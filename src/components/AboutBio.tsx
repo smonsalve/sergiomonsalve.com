@@ -51,7 +51,7 @@ export default function AboutBio() {
           src="/about/sergio-parapente.jpg"
           alt="Parapente en las montañas de Antioquia"
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
         />
       </div>
 
