@@ -1,0 +1,98 @@
+<h2>¿Cómo deben verse las project cards?</h2>
+<p class="subtitle">Tres estilos que encajan con el design system actual (fondo oscuro, verde neón, mono)</p>
+
+<div class="cards">
+
+  <!-- OPTION A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;padding:16px;font-family:monospace">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="color:#00ff88;font-size:11px;font-weight:bold">// slogs</span>
+          <span style="color:#444;font-size:10px;background:#222;padding:2px 6px;border-radius:2px">active</span>
+        </div>
+        <div style="background:#111;height:80px;border-radius:2px;display:flex;align-items:center;justify-content:center;border:1px solid #222;margin-bottom:12px">
+          <span style="color:#333;font-size:10px">[ screenshot ]</span>
+        </div>
+        <p style="color:#ccc;font-size:11px;margin:0 0 10px;line-height:1.4">Full Stack Developer Study Case — plataforma logística con Next.js y FastAPI.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+          <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 6px;border-radius:2px">TypeScript</span>
+          <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 6px;border-radius:2px">Python</span>
+          <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 6px;border-radius:2px">FastAPI</span>
+        </div>
+        <div style="display:flex;gap:12px">
+          <span style="color:#666;font-size:10px">GitHub ↗</span>
+          <span style="color:#666;font-size:10px">Demo ↗</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Compact card</h3>
+      <p>Screenshot pequeño arriba, texto y tags abajo. Grid de 2-3 columnas. Igual al PostCard del blog.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;padding:16px;font-family:monospace">
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="background:#111;width:120px;min-width:120px;height:80px;border-radius:2px;display:flex;align-items:center;justify-content:center;border:1px solid #222;flex-shrink:0">
+            <span style="color:#333;font-size:9px">screenshot</span>
+          </div>
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span style="color:#00ff88;font-size:11px;font-weight:bold">slogs</span>
+              <span style="color:#444;font-size:9px">Full Stack Dev</span>
+            </div>
+            <p style="color:#ccc;font-size:10px;margin:0 0 8px;line-height:1.4">Plataforma logística con dashboard en tiempo real.</p>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px">
+              <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 5px;border-radius:2px">TypeScript</span>
+              <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 5px;border-radius:2px">Python</span>
+            </div>
+            <div style="display:flex;gap:10px">
+              <span style="color:#666;font-size:9px">GitHub ↗</span>
+              <span style="color:#666;font-size:9px">Demo ↗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Horizontal card</h3>
+      <p>Screenshot a la izquierda, info a la derecha. Lista de 1 columna. Muestra más contexto por proyecto.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;overflow:hidden;font-family:monospace">
+        <div style="background:#111;height:90px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #2a2a2a;position:relative">
+          <span style="color:#333;font-size:10px">[ screenshot full-width ]</span>
+          <span style="position:absolute;top:8px;right:8px;color:#444;font-size:9px;background:#1a1a1a;padding:2px 6px;border-radius:2px">active</span>
+        </div>
+        <div style="padding:14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+            <span style="color:#fff;font-size:12px;font-weight:bold">slogs</span>
+            <span style="color:#555;font-size:9px">2026</span>
+          </div>
+          <p style="color:#888;font-size:10px;margin:0 0 10px;line-height:1.4">Plataforma logística con dashboard en tiempo real y FastAPI.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;gap:4px">
+              <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 5px;border-radius:2px">TS</span>
+              <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 5px;border-radius:2px">Python</span>
+              <span style="color:#00ff88;border:1px solid #00ff88;font-size:9px;padding:1px 5px;border-radius:2px">FastAPI</span>
+            </div>
+            <span style="color:#00ff88;font-size:10px">Ver caso →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Magazine card</h3>
+      <p>Screenshot ancho arriba, metadata abajo. CTA "Ver caso →" destacado. Grid de 2 columnas.</p>
+    </div>
+  </div>
+
+</div>

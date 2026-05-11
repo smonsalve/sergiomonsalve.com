@@ -1,0 +1,73 @@
+<h2>Contact page — form style</h2>
+<p class="subtitle">Both include the WhatsApp direct button. Difference is how the form type selector works.</p>
+
+<div class="split">
+
+  <div class="mockup" data-choice="a" onclick="toggleSelect(this)" style="cursor:pointer;">
+    <div class="mockup-header">A — Toggle buttons for project type</div>
+    <div class="mockup-body" style="background:#0f0f0f;padding:24px;font-family:system-ui;font-size:10px;min-height:340px;">
+      <div style="color:#00ff88;font-family:monospace;margin-bottom:16px;font-size:9px;">$ contact --new</div>
+
+      <div style="margin-bottom:12px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">// tipo de proyecto</div>
+        <div style="display:flex;gap:6px;">
+          <span style="background:#00ff88;color:#0f0f0f;padding:5px 10px;font-size:9px;font-weight:700;border-radius:2px;">Freelance</span>
+          <span style="background:#1a1a1a;border:1px solid #333;color:#888;padding:5px 10px;font-size:9px;border-radius:2px;">Full-time</span>
+          <span style="background:#1a1a1a;border:1px solid #333;color:#888;padding:5px 10px;font-size:9px;border-radius:2px;">Colaboración</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">nombre</div>
+        <div style="background:#0d0d0d;border:1px solid #1e3a2f;padding:7px 10px;color:#ccc;border-radius:2px;font-size:10px;">Juan Pérez</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">email</div>
+        <div style="background:#0d0d0d;border:1px solid #222;padding:7px 10px;color:#555;border-radius:2px;font-size:10px;">tu@email.com</div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">mensaje</div>
+        <div style="background:#0d0d0d;border:1px solid #222;padding:7px 10px;color:#555;border-radius:2px;font-size:10px;height:40px;"></div>
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="background:#00ff88;color:#0f0f0f;padding:6px 14px;font-size:9px;font-weight:700;border-radius:2px;">Enviar →</span>
+        <span style="background:#1a2a1a;border:1px solid #1e3a2f;color:#00ff88;padding:6px 12px;font-size:9px;border-radius:2px;">💬 WhatsApp directo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup" data-choice="b" onclick="toggleSelect(this)" style="cursor:pointer;">
+    <div class="mockup-header">B — Dropdown for project type</div>
+    <div class="mockup-body" style="background:#0f0f0f;padding:24px;font-family:system-ui;font-size:10px;min-height:340px;">
+      <div style="color:#00ff88;font-family:monospace;margin-bottom:16px;font-size:9px;">$ contact --new</div>
+
+      <div style="margin-bottom:10px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">nombre</div>
+        <div style="background:#0d0d0d;border:1px solid #1e3a2f;padding:7px 10px;color:#ccc;border-radius:2px;font-size:10px;">Juan Pérez</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">email</div>
+        <div style="background:#0d0d0d;border:1px solid #222;padding:7px 10px;color:#555;border-radius:2px;font-size:10px;">tu@email.com</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">tipo de proyecto</div>
+        <div style="background:#0d0d0d;border:1px solid #222;padding:7px 10px;color:#555;border-radius:2px;font-size:10px;display:flex;justify-content:space-between;">
+          <span>Seleccionar...</span><span>▾</span>
+        </div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div style="color:#555;font-size:9px;font-family:monospace;margin-bottom:4px;">mensaje</div>
+        <div style="background:#0d0d0d;border:1px solid #222;padding:7px 10px;color:#555;border-radius:2px;font-size:10px;height:40px;"></div>
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="background:#00ff88;color:#0f0f0f;padding:6px 14px;font-size:9px;font-weight:700;border-radius:2px;">Enviar →</span>
+        <span style="background:#1a2a1a;border:1px solid #1e3a2f;color:#00ff88;padding:6px 12px;font-size:9px;border-radius:2px;">💬 WhatsApp directo</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;">A surfaces the project type visually and makes it feel more intentional. B is more compact and conventional.</p>

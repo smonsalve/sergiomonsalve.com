@@ -45,6 +45,7 @@
     "blog": "Blog",
     "portfolio": "Portfolio",
     "recipes": "Recetas",
+    "guestbook": "Firmas",
     "contact": "Contacto"
   },
   "hero": {
@@ -92,6 +93,21 @@
     "whatsapp": "💬 WhatsApp directo",
     "success": "¡Mensaje enviado! Te respondo pronto.",
     "error": "Algo salió mal. Intenta de nuevo."
+  },
+  "guestbook": {
+    "comment": "// libro de firmas",
+    "title": "Libro de firmas",
+    "description": "Dejame un mensaje. Si pasas por aquí, es bueno saberlo.",
+    "signInPrompt": "Inicia sesión para firmar",
+    "signInWith": "Continuar con",
+    "formPlaceholder": "Deja tu mensaje... (máx. 280 caracteres)",
+    "submit": "Firmar →",
+    "pendingApproval": "Tu mensaje fue enviado — aparecerá aquí tras revisión.",
+    "empty": "Sé el primero en firmar.",
+    "signOut": "Cerrar sesión",
+    "signedInAs": "firmando como",
+    "metaTitle": "Libro de firmas",
+    "metaDescription": "Deja un mensaje en el libro de firmas de Sergio Monsalve."
   },
   "portfolio": {
     "comment": "// proyectos",

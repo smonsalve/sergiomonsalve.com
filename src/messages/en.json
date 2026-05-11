@@ -45,6 +45,7 @@
     "blog": "Blog",
     "portfolio": "Portfolio",
     "recipes": "Recipes",
+    "guestbook": "Guestbook",
     "contact": "Contact"
   },
   "hero": {
@@ -92,6 +93,21 @@
     "whatsapp": "💬 WhatsApp direct",
     "success": "Message sent! I'll get back to you soon.",
     "error": "Something went wrong. Please try again."
+  },
+  "guestbook": {
+    "comment": "// guestbook",
+    "title": "Guestbook",
+    "description": "Leave me a message. If you stopped by, it's good to know.",
+    "signInPrompt": "Sign in to leave a message",
+    "signInWith": "Continue with",
+    "formPlaceholder": "Leave your message... (max 280 characters)",
+    "submit": "Sign →",
+    "pendingApproval": "Your message was submitted — it will appear here after review.",
+    "empty": "Be the first to sign.",
+    "signOut": "Sign out",
+    "signedInAs": "signing as",
+    "metaTitle": "Guestbook",
+    "metaDescription": "Leave a message in Sergio Monsalve's guestbook."
   },
   "portfolio": {
     "comment": "// projects",
