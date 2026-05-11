@@ -1,26 +1,17 @@
 import { NextResponse } from 'next/server'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
 
-async function requireAdmin() {
+async function getAuthUser() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return null
-
-  const admin = createAdminClient()
-  const { data } = await admin
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
-
-  return data?.role === 'admin' ? user : null
+  return user
 }
 
 export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await requireAdmin()
+  const user = await getAuthUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { id } = await params
@@ -39,7 +30,7 @@ export async function DELETE(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await requireAdmin()
+  const user = await getAuthUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { id } = await params
