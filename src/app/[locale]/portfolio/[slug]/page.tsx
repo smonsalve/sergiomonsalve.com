@@ -88,7 +88,7 @@ export default async function ProjectPage({
             </div>
           )}
 
-          {(project.github || project.demo) && (
+          {(project.github || project.demo || (project.links ?? []).length > 0) && (
             <div>
               <p className="font-mono text-xs text-text-muted mb-3">{t('links')}</p>
               <div className="flex flex-col gap-2">
@@ -112,6 +112,17 @@ export default async function ProjectPage({
                     {t('demo')} ↗
                   </a>
                 )}
+                {(project.links ?? []).map(link => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs text-text-secondary hover:text-accent transition-colors"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
               </div>
             </div>
           )}

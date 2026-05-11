@@ -4,6 +4,8 @@ import matter from 'gray-matter'
 
 const contentRoot = path.join(process.cwd(), 'content/portfolio')
 
+export type ProjectLink = { label: string; url: string }
+
 export type ProjectMeta = {
   slug: string
   title: string
@@ -13,6 +15,7 @@ export type ProjectMeta = {
   stack: string[]
   github: string
   demo: string
+  links: ProjectLink[]
   status: 'active' | 'archived'
   featured: boolean
   image: string
@@ -38,6 +41,7 @@ export function getAllProjects(locale: string): ProjectMeta[] {
         stack: (data.stack as string[]) ?? [],
         github: (data.github as string) ?? '',
         demo: (data.demo as string) ?? '',
+        links: (data.links as ProjectLink[]) ?? [],
         status: (data.status as 'active' | 'archived') ?? 'active',
         featured: (data.featured as boolean) ?? false,
         image: (data.image as string) ?? '',
@@ -60,6 +64,7 @@ export function getProject(slug: string, locale: string): Project | null {
     stack: (data.stack as string[]) ?? [],
     github: (data.github as string) ?? '',
     demo: (data.demo as string) ?? '',
+    links: (data.links as ProjectLink[]) ?? [],
     status: (data.status as 'active' | 'archived') ?? 'active',
     featured: (data.featured as boolean) ?? false,
     image: (data.image as string) ?? '',
