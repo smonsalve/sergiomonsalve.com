@@ -5,7 +5,7 @@ import SkinSwitcher, { type SkinId } from './SkinSwitcher'
 
 const STORAGE_KEY = 'sm-about-skin'
 const VALID_SKINS: SkinId[] = ['crema', 'bosque', 'terminal']
-const DEFAULT_SKIN: SkinId = 'terminal'
+const DEFAULT_SKIN: SkinId = 'crema'
 
 export default function AboutSkinWrapper({ children }: { children: React.ReactNode }) {
   const [skin, setSkin] = useState<SkinId>(DEFAULT_SKIN)
