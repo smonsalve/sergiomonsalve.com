@@ -12,9 +12,9 @@ export default function GuestbookSignIn({
   locale: string
 }) {
   const supabase = createClient()
-  const redirectTo = `${window.location.origin}/auth/callback?next=/${locale}/guestbook`
 
   async function signIn(provider: 'github' | 'google') {
+    const redirectTo = `${window.location.origin}/${locale}/guestbook`
     await supabase.auth.signInWithOAuth({
       provider,
       options: { redirectTo },

@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
+import { Suspense } from 'react'
 import GuestbookSignIn from '@/components/guestbook/GuestbookSignIn'
 import GuestbookForm from '@/components/guestbook/GuestbookForm'
+import GuestbookAuthHandler from '@/components/guestbook/GuestbookAuthHandler'
 
 export async function generateMetadata({
   params,
@@ -51,6 +53,7 @@ export default async function GuestbookPage({
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
+      <Suspense fallback={null}><GuestbookAuthHandler /></Suspense>
       <p className="font-mono text-xs text-accent mb-2">{t('comment')}</p>
       <h1 className="text-3xl font-extrabold tracking-tight text-text mb-2">{t('title')}</h1>
       <p className="text-sm text-text-secondary mb-8">{t('description')}</p>
