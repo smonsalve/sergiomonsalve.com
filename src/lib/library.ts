@@ -7,6 +7,8 @@ const contentRoot = path.join(process.cwd(), 'content/library')
 
 export type BookStatus = 'listening' | 'completed' | 'queued' | 'abandoned'
 
+const VALID_STATUSES: BookStatus[] = ['listening', 'completed', 'queued', 'abandoned']
+
 export type BookMeta = {
   asin: string
   title: string
@@ -45,7 +47,7 @@ function mergeWithMdx(book: AudibleBook, locale: string): BookMeta {
   const { data } = matter(fs.readFileSync(mdxPath, 'utf-8'))
   return {
     ...book,
-    status: (data.status as BookStatus) ?? 'queued',
+    status: VALID_STATUSES.includes(data.status as BookStatus) ? (data.status as BookStatus) : 'queued',
     rating: typeof data.rating === 'number' ? data.rating : null,
   }
 }
@@ -67,7 +69,7 @@ export function getBook(asin: string, locale: string): Book | null {
   const { data, content } = matter(fs.readFileSync(mdxPath, 'utf-8'))
   return {
     ...book,
-    status: (data.status as BookStatus) ?? 'queued',
+    status: VALID_STATUSES.includes(data.status as BookStatus) ? (data.status as BookStatus) : 'queued',
     rating: typeof data.rating === 'number' ? data.rating : null,
     highlights: Array.isArray(data.highlights) ? (data.highlights as string[]) : [],
     content,
