@@ -7,7 +7,7 @@ const contentRoot = path.join(process.cwd(), 'content/library')
 
 export type BookStatus = 'listening' | 'completed' | 'queued' | 'abandoned'
 
-const VALID_STATUSES: BookStatus[] = ['listening', 'completed', 'queued', 'abandoned']
+export const VALID_STATUSES: BookStatus[] = ['listening', 'completed', 'queued', 'abandoned']
 
 export type BookMeta = {
   asin: string
