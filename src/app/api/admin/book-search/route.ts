@@ -11,10 +11,15 @@ type SearchResult = {
 }
 
 async function searchGoogleBooks(q: string): Promise<SearchResult[]> {
-  const res = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=8`,
-    { next: { revalidate: 3600 } }
-  )
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 5000)
+  let res: Response
+  try {
+    res = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=8`,
+      { signal: controller.signal, next: { revalidate: 3600 } }
+    )
+  } catch { return [] } finally { clearTimeout(timeout) }
   if (!res.ok) return []
   const data = await res.json() as { items?: unknown[] }
   return ((data.items ?? []) as Record<string, unknown>[])
@@ -39,10 +44,15 @@ async function searchGoogleBooks(q: string): Promise<SearchResult[]> {
 }
 
 async function searchOpenLibrary(q: string): Promise<SearchResult[]> {
-  const res = await fetch(
-    `https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=8`,
-    { next: { revalidate: 3600 } }
-  )
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 5000)
+  let res: Response
+  try {
+    res = await fetch(
+      `https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=8`,
+      { signal: controller.signal, next: { revalidate: 3600 } }
+    )
+  } catch { return [] } finally { clearTimeout(timeout) }
   if (!res.ok) return []
   const data = await res.json() as { docs?: unknown[] }
   return ((data.docs ?? []) as Record<string, unknown>[])

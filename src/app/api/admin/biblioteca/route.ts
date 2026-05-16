@@ -26,10 +26,11 @@ export async function GET() {
     admin.from('manual_books').select('id, title, authors, cover_url, runtime_length_min, visible, status, source_type'),
   ])
 
-  if (overridesResult.error) return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 })
+  if (overridesResult.error || manualResult.error) return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 })
 
   const overrideMap = new Map((overridesResult.data ?? []).map(r => [r.asin, r]))
 
+  // Admin uses 'es' locale — book titles/authors are locale-agnostic in current data
   const audibleBooks: AdminBook[] = getAllBooks('es').map(book => {
     const o = overrideMap.get(book.asin)
     return {
