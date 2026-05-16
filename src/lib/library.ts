@@ -28,6 +28,25 @@ export type Book = BookMeta & {
   content: string | null
 }
 
+export type BookOverride = {
+  asin: string
+  visible: boolean
+  status: BookStatus
+}
+
+export function applyBookOverrides(books: BookMeta[], overrides: BookOverride[]): BookMeta[] {
+  const map = new Map(overrides.map(o => [o.asin, o]))
+  return books
+    .map(b => {
+      const o = map.get(b.asin)
+      return o ? { ...b, status: o.status } : b
+    })
+    .filter(b => {
+      const o = map.get(b.asin)
+      return o ? o.visible : true
+    })
+}
+
 type AudibleBook = Omit<BookMeta, 'status' | 'rating'>
 
 function readLibraryJson(): AudibleBook[] {

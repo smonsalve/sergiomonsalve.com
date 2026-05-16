@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import fs from 'fs'
-import { getAllBooks, getBook, getBookAsins } from '../library'
+import { getAllBooks, getBook, getBookAsins, applyBookOverrides, type BookOverride, type BookMeta, type BookStatus } from '../library'
 
 const mockBook = {
   asin: 'B001TEST00',
@@ -117,5 +117,49 @@ describe('getBookAsins', () => {
     )
     vi.spyOn(fs, 'readFileSync').mockReturnValue(JSON.stringify([mockBook]) as any)
     expect(getBookAsins()).toEqual(['B001TEST00'])
+  })
+})
+
+// ── applyBookOverrides ──────────────────────────────────────────────────────
+
+function makeBookMeta(asin: string, status: BookStatus = 'queued'): BookMeta {
+  return {
+    asin,
+    title: `Book ${asin}`,
+    authors: ['Author'],
+    narrators: ['Narrator'],
+    cover_url: '',
+    runtime_length_min: 300,
+    purchase_date: '2024-01-01',
+    percent_complete: 0,
+    publisher_summary: '',
+    status,
+    rating: null,
+  }
+}
+
+describe('applyBookOverrides', () => {
+  it('returns all books unchanged when overrides is empty', () => {
+    const books = [makeBookMeta('B001'), makeBookMeta('B002')]
+    expect(applyBookOverrides(books, [])).toHaveLength(2)
+  })
+
+  it('excludes books with visible=false', () => {
+    const books = [makeBookMeta('B001'), makeBookMeta('B002')]
+    const overrides: BookOverride[] = [{ asin: 'B001', visible: false, status: 'queued' }]
+    const result = applyBookOverrides(books, overrides)
+    expect(result).toHaveLength(1)
+    expect(result[0].asin).toBe('B002')
+  })
+
+  it('overrides status from Supabase row', () => {
+    const books = [makeBookMeta('B001', 'queued')]
+    const overrides: BookOverride[] = [{ asin: 'B001', visible: true, status: 'completed' }]
+    expect(applyBookOverrides(books, overrides)[0].status).toBe('completed')
+  })
+
+  it('keeps original status when no override exists for a book', () => {
+    const books = [makeBookMeta('B001', 'listening')]
+    expect(applyBookOverrides(books, [])[0].status).toBe('listening')
   })
 })
