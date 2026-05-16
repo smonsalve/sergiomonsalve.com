@@ -31,8 +31,8 @@ async function searchGoogleBooks(q: string): Promise<SearchResult[]> {
         authors: (info.authors as string[]) ?? [],
         cover_url: cover,
         description: (info.description as string) ?? '',
-        ...(isbn && { isbn }),
-        ...(year && !isNaN(year) && { published_year: year }),
+        ...(isbn ? { isbn } : {}),
+        ...(year && !isNaN(year) ? { published_year: year } : {}),
       }
     })
     .filter(r => Boolean(r.title))
@@ -51,13 +51,15 @@ async function searchOpenLibrary(q: string): Promise<SearchResult[]> {
       const cover_url = coverId ? `https://covers.openlibrary.org/b/id/${coverId}-M.jpg` : ''
       const isbns = doc.isbn as string[] | undefined
       const authorNames = doc.author_name as string[] | undefined
+      const firstIsbn = isbns?.[0]
+      const firstPublishYear = doc.first_publish_year as number | undefined
       return {
         title: (doc.title as string) ?? '',
         authors: authorNames ?? [],
         cover_url,
         description: '',
-        ...(isbns?.[0] && { isbn: isbns[0] }),
-        ...(doc.first_publish_year && { published_year: doc.first_publish_year as number }),
+        ...(firstIsbn ? { isbn: firstIsbn } : {}),
+        ...(firstPublishYear ? { published_year: firstPublishYear } : {}),
       }
     })
     .filter(r => Boolean(r.title))
