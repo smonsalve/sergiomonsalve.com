@@ -1,19 +1,24 @@
 import { createAdminClient } from '@/lib/supabase/server'
+import { getBookAsins } from '@/lib/library'
 import { Link } from '@/i18n/navigation'
 
 async function getStats() {
   const admin = createAdminClient()
-  const [comments, guestbook] = await Promise.all([
+  const [comments, guestbook, libBooks] = await Promise.all([
     admin.from('comments').select('id, approved'),
     admin.from('guestbook_entries').select('id, approved'),
+    admin.from('library_books').select('asin, visible'),
   ])
   const c = comments.data ?? []
   const g = guestbook.data ?? []
+  const lb = libBooks.data ?? []
   return {
     commentsPending: c.filter(x => !x.approved).length,
     commentsTotal: c.length,
     guestbookPending: g.filter(x => !x.approved).length,
     guestbookTotal: g.length,
+    booksHidden: lb.filter(x => !x.visible).length,
+    booksTotal: getBookAsins().length,
   }
 }
 
@@ -45,6 +50,13 @@ export default async function AdminOverviewPage() {
           href="/admin/guestbook"
           accent={stats.guestbookPending > 0}
         />
+        <StatCard
+          label="Libros ocultos"
+          value={stats.booksHidden}
+          total={stats.booksTotal}
+          href="/admin/biblioteca"
+          accent={false}
+        />
       </div>
 
       <div className="border-t border-border pt-8">
@@ -63,6 +75,12 @@ export default async function AdminOverviewPage() {
             className="font-mono text-xs border border-border text-text-secondary px-4 py-2 rounded-sm hover:border-accent hover:text-accent transition-colors"
           >
             Gestionar firmas →
+          </Link>
+          <Link
+            href="/admin/biblioteca"
+            className="font-mono text-xs border border-border text-text-secondary px-4 py-2 rounded-sm hover:border-accent hover:text-accent transition-colors"
+          >
+            Gestionar biblioteca →
           </Link>
         </div>
       </div>
