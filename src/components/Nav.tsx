@@ -1,9 +1,13 @@
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
+import { createClient } from '@/lib/supabase/server'
 import LocaleSwitcher from './LocaleSwitcher'
+import UserMenu from './UserMenu'
 
-export default function Nav() {
-  const t = useTranslations('nav')
+export default async function Nav() {
+  const t = await getTranslations('nav')
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-background/90 backdrop-blur-sm">
@@ -30,6 +34,7 @@ export default function Nav() {
           {t('contact')}
         </Link>
         <LocaleSwitcher />
+        <UserMenu isLoggedIn={!!user} />
       </div>
     </nav>
   )
