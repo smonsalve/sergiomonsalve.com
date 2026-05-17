@@ -1,0 +1,54 @@
+---
+title: sergiomonsalve.com
+description: Portafolio personal y sitio web profesional con blog, recetario, biblioteca de lectura, guestbook y panel de administración completo. Construido con Next.js 16 App Router, Supabase y Tailwind CSS.
+date: "2026-05-01"
+role: Full Stack Developer
+stack: [Next.js, TypeScript, Supabase, Tailwind CSS, next-intl, Vercel]
+github: https://github.com/serandmoncas/sergiomonsalve.com
+demo: "https://sergiomonsalve.com"
+links:
+  - label: "Sitio web"
+    url: "https://sergiomonsalve.com"
+status: active
+featured: true
+image: /portfolio/sergiomonsalve-com.png
+---
+
+## El problema
+
+Un portafolio personal tiene que ser dos cosas al mismo tiempo: una vitrina profesional que comunique criterio técnico, y un espacio genuinamente personal que refleje quién eres más allá del código. La mayoría de los portfolios de desarrolladores caen en uno de dos extremos — o son un CV estático con proyectos listados, o son experimentos de diseño que priorizan la forma sobre el contenido.
+
+El reto era construir algo que demostrara nivel técnico real no solo en lo que muestra, sino en cómo está construido: arquitectura sólida, código limpio, funcionalidades no triviales — sin perder la voz personal del sitio.
+
+## La solución
+
+**sergiomonsalve.com** es un sitio con varias capas de profundidad: en la superficie, un portafolio y blog; por dentro, un sistema completo con autenticación, base de datos, internacionalización y un panel de administración construido desde cero.
+
+Las secciones principales:
+
+- **Blog** — artículos técnicos con comentarios moderados por el admin
+- **Portfolio** — casos de estudio en MDX con detalles de arquitectura y decisiones técnicas
+- **Recetas** — recetario personal (porque la cocina es parte de quien soy)
+- **Biblioteca** — integración con Audible CLI para mostrar los libros que estoy leyendo, con notas, highlights y reseñas personales. Permite agregar libros físicos con búsqueda via Google Books y Open Library
+- **Guestbook** — libro de visitas con OAuth (GitHub y Google)
+- **Admin panel** — interfaz completa para moderar comentarios, firmas, y gestionar la biblioteca desde el navegador
+
+## Decisiones técnicas
+
+**Next.js 16 App Router** — la elección más exigente técnicamente porque el App Router cambia fundamentalmente el modelo mental: server components, async layouts, streaming. Usarlo correctamente (no solo como un wrapper de React) requiere entender qué se renderiza dónde y por qué. El sitio mezcla server components para datos, client components para interactividad, y rutas API para operaciones autenticadas.
+
+**next-intl para i18n** — internacionalización completa en español e inglés con rutas localizadas (`/es`, `/en`). Todas las cadenas de texto en archivos JSON separados por locale. La navegación type-safe importada desde `@/i18n/navigation` en lugar de `next/navigation`.
+
+**Supabase** como backend — auth con magic link, base de datos para comentarios, firmas, biblioteca de libros (tabla `manual_books`, `book_notes`, `library_books`) y guestbook con OAuth. Las API routes usan `createAdminClient()` con service role para operaciones privilegiadas, `createClient()` con cookie-based session para operaciones del usuario.
+
+**MDX file-based content** — blog, recetas y portfolio son archivos `.mdx` en el filesystem. No hay CMS. Publicar contenido nuevo es hacer un commit. El sistema usa `gray-matter` para parsear el frontmatter y `next-mdx-remote` para renderizar el contenido.
+
+**Audible CLI + biblioteca unificada** — un script de importación normaliza el JSON exportado por `audible-cli` al esquema interno. Los libros se mezclan con los manuales (de cualquier fuente) en una vista unificada con `UnifiedBook`, aplicando overrides de Supabase para visibilidad y estado.
+
+**Owner mode** — cuando el admin está autenticado en el sitio público, el nav muestra un indicador verde y un dropdown con acceso directo al panel admin. En la biblioteca, cada card muestra un botón `✎` para editar notas en hover.
+
+## Resultados
+
+El sitio es el proyecto técnico más completo que he construido para uso real — no como prueba técnica, sino como herramienta que uso todos los días. Cada funcionalidad tiene una razón de existir: el admin porque no quiero abrir Supabase para moderar un comentario, la biblioteca porque quiero mantener registro de lo que leo sin depender de Goodreads, las recetas porque cocino con hongos y quiero un lugar donde documentar lo que funciona.
+
+La arquitectura está pensada para crecer: añadir una sección nueva es crear un directorio en `content/` y escribir la lib correspondiente. El patrón ya está establecido.

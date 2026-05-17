@@ -1,0 +1,54 @@
+---
+title: sergiomonsalve.com
+description: Personal portfolio and professional website with blog, recipe collection, reading library, guestbook, and a full admin panel. Built with Next.js 16 App Router, Supabase, and Tailwind CSS.
+date: "2026-05-01"
+role: Full Stack Developer
+stack: [Next.js, TypeScript, Supabase, Tailwind CSS, next-intl, Vercel]
+github: https://github.com/serandmoncas/sergiomonsalve.com
+demo: "https://sergiomonsalve.com"
+links:
+  - label: "Website"
+    url: "https://sergiomonsalve.com"
+status: active
+featured: true
+image: /portfolio/sergiomonsalve-com.png
+---
+
+## The problem
+
+A personal portfolio needs to be two things at once: a professional showcase that communicates technical judgment, and a genuinely personal space that reflects who you are beyond the code. Most developer portfolios fall into one of two extremes — either a static CV with a list of projects, or a design experiment that prioritizes form over content.
+
+The challenge was to build something that demonstrated real technical depth not just in what it shows, but in how it's built: solid architecture, clean code, non-trivial features — without losing the site's personal voice.
+
+## The solution
+
+**sergiomonsalve.com** is a site with multiple layers of depth: on the surface, a portfolio and blog; underneath, a complete system with authentication, a database, internationalization, and an admin panel built from scratch.
+
+The main sections:
+
+- **Blog** — technical articles with admin-moderated comments
+- **Portfolio** — MDX case studies with architecture details and technical decisions
+- **Recipes** — a personal recipe collection (because cooking is part of who I am)
+- **Library** — Audible CLI integration to track books I'm reading, with notes, highlights, and personal reviews. Supports adding physical books via Google Books and Open Library search
+- **Guestbook** — visitor book with OAuth (GitHub and Google)
+- **Admin panel** — full interface for moderating comments, signatures, and managing the library from the browser
+
+## Technical decisions
+
+**Next.js 16 App Router** — the most technically demanding choice because the App Router fundamentally changes the mental model: server components, async layouts, streaming. Using it correctly (not just as a React wrapper) requires understanding what renders where and why. The site mixes server components for data, client components for interactivity, and API routes for authenticated operations.
+
+**next-intl for i18n** — full internationalization in Spanish and English with localized routes (`/es`, `/en`). All copy in locale-specific JSON files. Type-safe navigation imported from `@/i18n/navigation` instead of `next/navigation`.
+
+**Supabase as backend** — magic link auth, database for comments, signatures, library books (`manual_books`, `book_notes`, `library_books` tables), and OAuth guestbook. API routes use `createAdminClient()` with service role for privileged operations, `createClient()` with cookie-based session for user operations.
+
+**MDX file-based content** — blog, recipes, and portfolio are `.mdx` files in the filesystem. No CMS. Publishing new content means making a commit. The system uses `gray-matter` to parse frontmatter and `next-mdx-remote` to render content.
+
+**Audible CLI + unified library** — an import script normalizes the JSON exported by `audible-cli` to the internal schema. Books are merged with manually-added ones (from any source) into a unified view via `UnifiedBook`, applying Supabase overrides for visibility and status.
+
+**Owner mode** — when the admin is authenticated on the public site, the nav shows a green indicator and a dropdown with direct access to the admin panel. In the library, each card shows a `✎` button on hover to edit notes.
+
+## Results
+
+This site is the most complete technical project I've built for real use — not as a technical assessment, but as a tool I use every day. Every feature exists for a reason: the admin panel because I don't want to open Supabase just to moderate a comment, the library because I want to track what I read without depending on Goodreads, the recipes because I cook with mushrooms and want a place to document what works.
+
+The architecture is designed to grow: adding a new section means creating a directory in `content/` and writing the corresponding lib. The pattern is already established.
