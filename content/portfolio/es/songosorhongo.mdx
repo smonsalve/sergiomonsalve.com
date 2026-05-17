@@ -1,0 +1,45 @@
+---
+title: Songosorhongo
+description: Plataforma e-commerce y marca de cocina basada en hongos silvestres colombianos — recetas, productos y experiencias gastronómicas desde Santa Elena, Antioquia.
+date: "2024-01-01"
+role: Founder & Full Stack Developer
+stack: [Next.js, TypeScript, Supabase, Tailwind CSS, Vercel]
+github: ""
+demo: "https://songosorhongo.com"
+links:
+  - label: "Sitio web"
+    url: "https://songosorhongo.com"
+status: active
+featured: true
+image: /portfolio/songosorhongo.png
+---
+
+## El problema
+
+Los hongos silvestres de los bosques de niebla alrededor de Santa Elena (Antioquia) son un ingrediente con enorme potencial gastronómico — pero completamente desconocido en la cocina colombiana cotidiana. No existe una cultura local de recolección, identificación ni preparación. Los cocineros y restaurantes que quieren trabajar con hongos locales no tienen proveedores confiables, y las personas que los encuentran en el mercado no saben qué hacer con ellos.
+
+El problema era crear una presencia digital que hiciera tres cosas a la vez: **educar** sobre qué son y cómo cocinarlos, **inspirar** con recetas concretas y accesibles, y **conectar** con quienes quieren comprar producto fresco o procesado directamente desde la finca.
+
+## La solución
+
+**Songosorhongo** es la marca y plataforma que une la recolección artesanal de hongos con la divulgación gastronómica. El sitio es el punto central de la operación: catálogo de productos, recetario, blog sobre foraging y micología, y canal directo de contacto con compradores.
+
+El enfoque editorial es deliberadamente personal — la voz es la de alguien que vive en el bosque y cocina hongos todos los días, no la de una empresa. Las recetas son experimentadas antes de publicarse. Los productos son los mismos que se usan en esas recetas.
+
+La arquitectura del sitio refleja ese mismo criterio de simplicidad: sin carritos de compra complejos, sin ERP, sin plataforma de terceros que se lleve comisión. El contacto es directo, la logística es local, el producto es fresco.
+
+## Decisiones técnicas
+
+**Next.js + Tailwind CSS** — el mismo stack de este portafolio, elegido por las mismas razones: rendimiento, SEO nativo con App Router, y facilidad para iterar contenido sin tocar código. El diseño es minimalista y enfocado en la fotografía de producto y comida.
+
+**Supabase** para las funcionalidades dinámicas — formulario de contacto, lista de espera para temporadas de hongos y gestión de pedidos recurrentes de clientes que ya compraron antes. Sin base de datos compleja: tablas simples que resuelven exactamente lo que se necesita.
+
+**Contenido en MDX** — las recetas y el blog usan el mismo sistema de archivos que este sitio. Cada receta tiene sus ingredientes, tiempo de preparación y porciones en el frontmatter; el cuerpo es texto con instrucciones paso a paso. Publicar una receta nueva es crear un archivo de texto.
+
+**Vercel** para el despliegue — deploy automático en cada commit, previews por rama para revisar cambios antes de publicar, y CDN global sin configuración adicional.
+
+## Resultados
+
+Songosorhongo opera en temporadas de lluvia en los bosques de niebla antioqueños (principalmente marzo–mayo y octubre–diciembre). La plataforma digital permite mantener la relación con los clientes en los meses sin producto, publicar contenido sobre micología y cocina, y construir la lista de espera para la próxima temporada.
+
+El proyecto es también un experimento en **negocio de nicho con superficie digital mínima**: un solo dominio, sin redes sociales complejas, sin marketplace. La tracción viene del producto mismo y de la comunidad que se forma alrededor de un ingrediente que muy poca gente conoce pero que, una vez probado, genera lealtad.
