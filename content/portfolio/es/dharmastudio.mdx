@@ -1,0 +1,47 @@
+---
+title: Dharma Studio
+description: Landing page para estudio de tatuaje en CDMX con estética editorial oscura — tipografía serif, cursor personalizado, grano de película y cinco disciplinas de tinta. HTML/CSS/JS puro, sin framework.
+date: "2026-01-01"
+role: Frontend Developer & Designer
+stack: [HTML, CSS, JavaScript, Google Fonts, GitHub Pages]
+github: https://github.com/serandmoncas/dharmastudio.art
+demo: "https://dharmastudio.art"
+links:
+  - label: "Sitio web"
+    url: "https://dharmastudio.art"
+status: active
+featured: false
+image: /portfolio/dharmastudio.png
+---
+
+## El problema
+
+Dharma Studio es un estudio de tatuaje en Ciudad de México con una filosofía particular: el tatuaje como práctica devocional, no como consumo. *"No hacemos tatuajes. Hacemos reliquias."* El reto era traducir esa filosofía en un sitio web que se sintiera a la altura del discurso — sin caer en el cliché dark del sector, sin verse genérico, sin depender de plantillas.
+
+El estudio necesitaba presencia digital para reservas, galería de obra reciente y presentación de sus cinco disciplinas. Pero más que funcional, el sitio debía ser coherente: si el tatuaje es liturgia, el sitio tiene que parecerlo.
+
+## La solución
+
+Un landing page de página única con seis secciones — Manifiesto, Disciplinas, Galería, Sobre el estudio, Reservas y Diario — construido en HTML, CSS y JavaScript vanilla. Sin framework, sin build step, sin dependencias de npm. Un solo archivo deployable.
+
+La identidad visual parte de tres decisiones: **paleta hueso/sangre** (`#e8e3d8` sobre `#0a0908`, con rojo `#7a1018` como acento), **tipografía serif** (Cormorant Garamond) para titulares y todo el lenguaje editorial, y **grano de película** como capa permanente vía SVG filter — ese ruido analógico que convierte una pantalla en algo casi táctil.
+
+Las cinco disciplinas se listan en un grid tabular con numeración romana, nombre, descripción y precio — el mismo formato que usaría un catálogo impreso de principios del siglo XX.
+
+## Decisiones técnicas
+
+**Sin framework** — la restricción fue intencional. Un landing page de una sola página no necesita React, Next.js ni estado compartido. El archivo `index.html` es el sitio completo: CSS embebido, JS al final del body, cero dependencias externas salvo Google Fonts. El resultado es un sitio que carga en menos de 200ms con un score de Lighthouse casi perfecto.
+
+**Cursor personalizado** — reemplaza el cursor del sistema por un círculo de 28px con borde en rojo sangre y punto central, con `mix-blend-mode: difference` para que sea visible sobre cualquier fondo. Se agranda en hover sobre elementos interactivos. Es el tipo de detalle que un usuario consciente nota y que refuerza la coherencia de la experiencia.
+
+**Animaciones con Intersection Observer** — todos los elementos tienen clase `.reveal` y entran con fade+translate al hacer scroll, usando el API nativo del navegador. Sin librería de animaciones, sin GSAP. El efecto es suave porque los keyframes están escritos directamente.
+
+**Servicios en JavaScript** — el array `SERVICES` se renderiza dinámicamente en el DOM para mantener el HTML limpio y hacer fácil agregar o modificar disciplinas sin tocar el markup.
+
+**GitHub Pages** — deploy directo desde el repositorio. El dominio `dharmastudio.art` apunta vía DNS a los servidores de GitHub. Costo de infraestructura: cero.
+
+## Resultados
+
+El sitio refleja el nivel editorial que el estudio quería comunicar — no es una página de tatuajes, es un documento. La combinación de serif clásico, grano analógico, paleta minimalista y copy en primera persona crea una experiencia que se diferencia completamente del sector.
+
+Lo más interesante del ejercicio fue la restricción de hacerlo en HTML puro: obliga a pensar en CSS como diseño real, no como utilidades de Tailwind, y en JavaScript como comportamiento mínimo necesario, no como arquitectura.
